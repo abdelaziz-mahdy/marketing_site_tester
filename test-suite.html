@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Flow BLE - Test Suite</title>
+    <style>
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            padding: 20px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+            background: #f8f9fa;
+        }
+        .test-section { 
+            background: white; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-item { 
+            padding: 10px; 
+            margin: 5px 0; 
+            border-left: 4px solid #ccc; 
+            background: #f8f9fa;
+        }
+        .pass { border-left-color: #28a745; background: #d4edda; }
+        .fail { border-left-color: #dc3545; background: #f8d7da; }
+        .warning { border-left-color: #ffc107; background: #fff3cd; }
+        .info { border-left-color: #17a2b8; background: #d1ecf1; }
+        button { 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .results { margin-top: 20px; }
+        iframe { width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 4px; }
+        .test-controls { text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Claude Flow BLE Marketing Site - Test Suite</h1>
+    
+    <div class="test-controls">
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="runFunctionalityTests()">Test Functionality</button>
+        <button onclick="runResponsiveTests()">Test Responsive Design</button>
+        <button onclick="runAccessibilityTests()">Test Accessibility</button>
+        <button onclick="runPerformanceTests()">Test Performance</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Site Preview</h2>
+        <iframe id="siteFrame" src="http://localhost:3000/index.html"></iframe>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="testResults" class="results"></div>
+    </div>
+
+    <script>
+        let testResults = [];
+
+        function addResult(test, status, message, details = '') {
+            testResults.push({
+                test,
+                status,
+                message,
+                details,
+                timestamp: new Date().toISOString()
+            });
+            updateResultsDisplay();
+        }
+
+        function updateResultsDisplay() {
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = testResults.map(result => `
+                <div class="test-item ${result.status}">
+                    <strong>${result.test}</strong>: ${result.message}
+                    ${result.details ? `<br><small>${result.details}</small>` : ''}
+                    <br><small>Time: ${new Date(result.timestamp).toLocaleTimeString()}</small>
+                </div>
+            `).join('');
+        }
+
+        function clearResults() {
+            testResults = [];
+            updateResultsDisplay();
+        }
+
+        async function runAllTests() {
+            clearResults();
+            addResult('Test Suite', 'info', 'Starting comprehensive test suite...');
+            
+            await runFunctionalityTests();
+            await runResponsiveTests();
+            await runAccessibilityTests();
+            await runPerformanceTests();
+            
+            const passed = testResults.filter(r => r.status === 'pass').length;
+            const failed = testResults.filter(r => r.status === 'fail').length;
+            const warnings = testResults.filter(r => r.status === 'warning').length;
+            
+            addResult('Test Summary', passed === testResults.length - 1 ? 'pass' : 'info', 
+                `Tests completed: ${passed} passed, ${failed} failed, ${warnings} warnings`);
+        }
+
+        async function runFunctionalityTests() {
+            addResult('Functionality Tests', 'info', 'Starting functionality tests...');
+            
+            try {
+                // Test if the site loads
+                const response = await fetch('http://localhost:3000/index.html');
+                if (response.ok) {
+                    addResult('Site Loading', 'pass', 'Site loads successfully');
+                    
+                    // Test HTML structure
+                    const html = await response.text();
+                    
+                    // Check essential sections
+                    const sections = ['hero', 'features', 'roadmap', 'use-cases', 'monetization', 'download'];
+                    sections.forEach(section => {
+                        if (html.includes(`id="${section}"`)) {
+                            addResult(`Section: ${section}`, 'pass', `Section ${section} found in HTML`);
+                        } else {
+                            addResult(`Section: ${section}`, 'fail', `Section ${section} not found`);
+                        }
+                    });
+
+                    // Check for JavaScript files
+                    if (html.includes('scripts/main.js') && html.includes('scripts/animations.js')) {
+                        addResult('JavaScript Files', 'pass', 'All JavaScript files are included');
+                    } else {
+                        addResult('JavaScript Files', 'fail', 'Missing JavaScript files');
+                    }
+
+                    // Check for CSS files
+                    if (html.includes('styles/main.css') && html.includes('styles/responsive.css')) {
+                        addResult('CSS Files', 'pass', 'All CSS files are included');
+                    } else {
+                        addResult('CSS Files', 'fail', 'Missing CSS files');
+                    }
+
+                    // Check meta tags
+                    if (html.includes('meta name="description"')) {
+                        addResult('SEO Meta Tags', 'pass', 'Description meta tag found');
+                    } else {
+                        addResult('SEO Meta Tags', 'fail', 'Missing description meta tag');
+                    }
+
+                    if (html.includes('property="og:')) {
+                        addResult('OpenGraph Tags', 'pass', 'OpenGraph tags found');
+                    } else {
+                        addResult('OpenGraph Tags', 'warning', 'OpenGraph tags missing');
+                    }
+
+                } else {
+                    addResult('Site Loading', 'fail', `Site failed to load: ${response.status}`);
+                }
+            } catch (error) {
+                addResult('Site Loading', 'fail', `Error loading site: ${error.message}`);
+            }
+
+            // Test JavaScript functionality
+            try {
+                const jsResponse = await fetch('http://localhost:3000/scripts/main.js');
+                if (jsResponse.ok) {
+                    addResult('Main JavaScript', 'pass', 'Main JavaScript file loads successfully');
+                    const jsContent = await jsResponse.text();
+                    
+                    // Check for key functions
+                    if (jsContent.includes('handleDownloadClick')) {
+                        addResult('Download Functionality', 'pass', 'Download handler found');
+                    } else {
+                        addResult('Download Functionality', 'fail', 'Download handler missing');
+                    }
+
+                    if (jsContent.includes('handleDonationClick')) {
+                        addResult('Donation Functionality', 'pass', 'Donation handler found');
+                    } else {
+                        addResult('Donation Functionality', 'fail', 'Donation handler missing');
+                    }
+
+                    if (jsContent.includes('handleNewsletterSubmit')) {
+                        addResult('Newsletter Functionality', 'pass', 'Newsletter handler found');
+                    } else {
+                        addResult('Newsletter Functionality', 'fail', 'Newsletter handler missing');
+                    }
+                }
+            } catch (error) {
+                addResult('JavaScript Loading', 'fail', `Error loading JavaScript: ${error.message}`);
+            }
+        }
+
+        async function runResponsiveTests() {
+            addResult('Responsive Tests', 'info', 'Starting responsive design tests...');
+            
+            // Test CSS responsiveness
+            try {
+                const cssResponse = await fetch('http://localhost:3000/styles/responsive.css');
+                if (cssResponse.ok) {
+                    addResult('Responsive CSS', 'pass', 'Responsive CSS file loads successfully');
+                    const cssContent = await cssResponse.text();
+                    
+                    // Check for media queries
+                    const mediaQueries = cssContent.match(/@media[^{]+\{/g);
+                    if (mediaQueries && mediaQueries.length > 0) {
+                        addResult('Media Queries', 'pass', `Found ${mediaQueries.length} media queries`);
+                    } else {
+                        addResult('Media Queries', 'warning', 'No media queries found');
+                    }
+
+                    // Check for viewport meta tag in HTML
+                    const htmlResponse = await fetch('http://localhost:3000/index.html');
+                    const html = await htmlResponse.text();
+                    if (html.includes('viewport')) {
+                        addResult('Viewport Meta', 'pass', 'Viewport meta tag found');
+                    } else {
+                        addResult('Viewport Meta', 'fail', 'Viewport meta tag missing');
+                    }
+
+                } else {
+                    addResult('Responsive CSS', 'fail', 'Responsive CSS file failed to load');
+                }
+            } catch (error) {
+                addResult('Responsive CSS', 'fail', `Error loading responsive CSS: ${error.message}`);
+            }
+
+            // Test different viewport sizes (simulated)
+            const viewports = [
+                { name: 'Mobile', width: 375 },
+                { name: 'Tablet', width: 768 },
+                { name: 'Desktop', width: 1024 },
+                { name: 'Large Desktop', width: 1440 }
+            ];
+
+            viewports.forEach(viewport => {
+                // This is a simulated test - in real testing, you'd actually resize
+                addResult(`${viewport.name} View`, 'info', 
+                    `Would test ${viewport.width}px width - Manual testing required`);
+            });
+        }
+
+        async function runAccessibilityTests() {
+            addResult('Accessibility Tests', 'info', 'Starting accessibility tests...');
+            
+            try {
+                const response = await fetch('http://localhost:3000/index.html');
+                const html = await response.text();
+                
+                // Check for semantic HTML
+                const semanticTags = ['main', 'section', 'article', 'nav', 'header', 'footer'];
+                semanticTags.forEach(tag => {
+                    if (html.includes(`<${tag}`)) {
+                        addResult(`Semantic HTML: ${tag}`, 'pass', `${tag} tag found`);
+                    }
+                });
+
+                // Check for ARIA attributes
+                if (html.includes('aria-')) {
+                    addResult('ARIA Attributes', 'pass', 'ARIA attributes found');
+                } else {
+                    addResult('ARIA Attributes', 'warning', 'No ARIA attributes found');
+                }
+
+                // Check for alt attributes on images
+                if (html.includes('alt=')) {
+                    addResult('Image Alt Text', 'pass', 'Alt attributes found');
+                } else {
+                    addResult('Image Alt Text', 'warning', 'No alt attributes found - check if images exist');
+                }
+
+                // Check for proper heading hierarchy
+                const headingMatches = html.match(/<h[1-6]/g);
+                if (headingMatches && headingMatches.length > 0) {
+                    addResult('Heading Structure', 'pass', `Found ${headingMatches.length} headings`);
+                } else {
+                    addResult('Heading Structure', 'fail', 'No headings found');
+                }
+
+                // Check for form labels
+                if (html.includes('<label')) {
+                    addResult('Form Labels', 'pass', 'Form labels found');
+                } else {
+                    addResult('Form Labels', 'info', 'No form labels found - check if forms exist');
+                }
+
+                // Check for skip links
+                if (html.includes('skip')) {
+                    addResult('Skip Links', 'pass', 'Skip links may be present');
+                } else {
+                    addResult('Skip Links', 'warning', 'Skip links not found');
+                }
+
+            } catch (error) {
+                addResult('Accessibility Tests', 'fail', `Error running accessibility tests: ${error.message}`);
+            }
+        }
+
+        async function runPerformanceTests() {
+            addResult('Performance Tests', 'info', 'Starting performance tests...');
+            
+            // Test file sizes
+            const files = [
+                { name: 'HTML', url: 'index.html' },
+                { name: 'Main CSS', url: 'styles/main.css' },
+                { name: 'Responsive CSS', url: 'styles/responsive.css' },
+                { name: 'Main JS', url: 'scripts/main.js' },
+                { name: 'Animations JS', url: 'scripts/animations.js' }
+            ];
+
+            for (const file of files) {
+                try {
+                    const start = performance.now();
+                    const response = await fetch(`http://localhost:3000/${file.url}`);
+                    const end = performance.now();
+                    
+                    if (response.ok) {
+                        const blob = await response.blob();
+                        const size = blob.size;
+                        const loadTime = end - start;
+                        
+                        let sizeStatus = 'pass';
+                        if (file.name.includes('CSS') && size > 100000) sizeStatus = 'warning';
+                        if (file.name.includes('JS') && size > 200000) sizeStatus = 'warning';
+                        if (file.name.includes('HTML') && size > 500000) sizeStatus = 'warning';
+                        
+                        addResult(`${file.name} Size`, sizeStatus, 
+                            `${(size / 1024).toFixed(2)} KB, loaded in ${loadTime.toFixed(2)}ms`);
+                    } else {
+                        addResult(`${file.name} Load`, 'fail', `Failed to load: ${response.status}`);
+                    }
+                } catch (error) {
+                    addResult(`${file.name} Load`, 'fail', `Error: ${error.message}`);
+                }
+            }
+
+            // Test for performance best practices
+            try {
+                const htmlResponse = await fetch('http://localhost:3000/index.html');
+                const html = await htmlResponse.text();
+                
+                // Check for minification
+                if (html.includes('\n    ')) {
+                    addResult('HTML Minification', 'info', 'HTML is not minified - consider for production');
+                } else {
+                    addResult('HTML Minification', 'pass', 'HTML appears to be minified');
+                }
+
+                // Check for gzip/compression headers
+                if (htmlResponse.headers.get('content-encoding')) {
+                    addResult('Compression', 'pass', 
+                        `Content encoding: ${htmlResponse.headers.get('content-encoding')}`);
+                } else {
+                    addResult('Compression', 'info', 'No compression detected - enable for production');
+                }
+
+                // Check for caching headers
+                if (htmlResponse.headers.get('cache-control')) {
+                    addResult('Caching Headers', 'pass', 'Cache control headers present');
+                } else {
+                    addResult('Caching Headers', 'info', 'No cache headers - consider adding for production');
+                }
+
+            } catch (error) {
+                addResult('Performance Analysis', 'fail', `Error: ${error.message}`);
+            }
+        }
+
+        // Initialize with basic info
+        window.addEventListener('load', () => {
+            addResult('Test Suite Loaded', 'pass', 'Test suite is ready to run');
+        });
+    </script>
+</body>
+</html>

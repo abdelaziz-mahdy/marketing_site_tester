@@ -1,0 +1,779 @@
+/* ==========================================================================
+   Claude Flow BLE Marketing Site - Responsive Styles
+   ========================================================================== */
+
+/* Container System
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Grid System
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid-1 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
+.grid-12 { grid-template-columns: repeat(12, 1fr); }
+
+/* Feature Grid */
+.features-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Roadmap Timeline */
+.roadmap-timeline {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+/* Use Cases Grid */
+.use-cases-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+/* Monetization Layout */
+.monetization-layout {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+/* Support Features Mobile */
+.support-features {
+  gap: var(--space-3);
+}
+
+.support-feature {
+  padding: var(--space-3);
+  gap: var(--space-3);
+}
+
+.support-feature .feature-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Popup Mockup Mobile */
+.popup-mockup {
+  max-width: 280px;
+}
+
+.popup-header {
+  padding: var(--space-3);
+}
+
+.popup-body {
+  padding: var(--space-4);
+}
+
+.popup-buttons {
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.popup-buttons .btn {
+  width: 100%;
+}
+
+/* Donation Buttons Mobile */
+.donation-buttons {
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.donation-buttons .btn {
+  width: 100%;
+}
+
+/* Transparency Grid Mobile */
+.transparency-grid {
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Hero Layout */
+.hero {
+  padding: var(--space-12) 0;
+  text-align: center;
+}
+
+.hero-content {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.hero-text {
+  max-width: none;
+}
+
+.hero-visual {
+  max-width: 100%;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* Mobile First - Base Styles (0-639px)
+   ========================================================================== */
+
+/* Typography Scaling */
+.display {
+  font-size: 32px;
+  line-height: 36px;
+}
+
+.h1 {
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.h2 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.h3 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.subtitle {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+/* Responsive Utilities */
+
+/* Cards Mobile */
+.card {
+  padding: var(--space-4);
+  margin: var(--space-3);
+}
+
+.feature-card {
+  padding: var(--space-6);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+}
+
+/* Buttons Mobile */
+.btn {
+  padding: 10px 20px;
+  min-height: 44px;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-group {
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Small Tablets and Up (640px+)
+   ========================================================================== */
+@media (min-width: 640px) {
+  .container {
+    padding: 0 var(--space-6);
+  }
+  
+  /* Grid System Updates */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+  
+  .use-cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Monetization Layout - Small Tablets */
+  .monetization-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  /* Popup Mockup Updates */
+  .popup-mockup {
+    max-width: 320px;
+  }
+  
+  /* Donation Buttons - Horizontal on Small Tablets */
+  .donation-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .donation-buttons .btn {
+    width: auto;
+    min-width: 80px;
+  }
+  
+  /* Hero Updates */
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  /* Button Updates */
+  .btn {
+    width: auto;
+  }
+  
+  .btn-group {
+    flex-direction: row;
+    width: auto;
+  }
+  
+  /* Card Updates */
+  .card {
+    padding: var(--space-5);
+    margin: var(--space-4);
+  }
+  
+  /* Typography Updates */
+  .display {
+    font-size: 40px;
+    line-height: 44px;
+  }
+  
+  .h1 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  
+  .h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-body-large);
+    line-height: var(--line-height-body-large);
+  }
+}
+
+/* Tablets and Up (768px+)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+  
+  /* Grid System Updates */
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Monetization Layout - Tablets */
+  .monetization-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+  
+  /* Support Features - Tablet Layout */
+  .support-feature .feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Popup Mockup - Tablet Size */
+  .popup-mockup {
+    max-width: 350px;
+  }
+  
+  /* Transparency Grid - Two Columns on Tablets */
+  .transparency-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+  
+  /* Hero Updates */
+  .hero {
+    padding: var(--space-16) 0;
+    text-align: left;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+  
+  /* Typography Updates */
+  .display {
+    font-size: var(--font-size-display);
+    line-height: var(--line-height-display);
+  }
+  
+  .h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+  }
+  
+  .h2 {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+  }
+  
+  .h3 {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+  
+  /* Card Updates */
+  .card {
+    padding: var(--space-6);
+    margin: var(--space-5);
+  }
+  
+  .feature-card {
+    padding: var(--space-8);
+  }
+  
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  /* Navigation Updates */
+  .slide-navigation {
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-6);
+  }
+  
+  .slide-nav-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .slide-indicator {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Roadmap Updates */
+  .roadmap-timeline {
+    gap: var(--space-6);
+  }
+  
+  .roadmap-item {
+    padding: var(--space-6);
+  }
+  
+  .roadmap-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .roadmap-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .roadmap-timeline-connector {
+    left: 24px;
+    height: 32px;
+    top: -16px;
+  }
+}
+
+/* Small Desktops and Up (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+  
+  /* Grid System Updates */
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-12);
+  }
+  
+  .use-cases-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  
+  /* Monetization Layout - Desktop */
+  .monetization-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+  
+  /* Support Features - Desktop Layout */
+  .support-features {
+    gap: var(--space-6);
+  }
+  
+  .support-feature {
+    padding: var(--space-6);
+    gap: var(--space-4);
+  }
+  
+  .support-feature .feature-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  /* Use Case Cards - Desktop Enhancements */
+  .use-case {
+    padding: var(--space-8);
+  }
+  
+  .use-case-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+  
+  .roadmap-timeline {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    position: relative;
+  }
+  
+  /* Desktop Timeline Connector Line */
+  .roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 16.67%;
+    right: 16.67%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-warning) 0%, rgba(245, 158, 11, 0.5) 50%, var(--color-warning) 100%);
+    z-index: 0;
+  }
+  
+  .roadmap-item {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .roadmap-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .roadmap-timeline-connector {
+    display: none;
+  }
+  
+  .roadmap-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    margin-bottom: var(--space-4);
+  }
+  
+  /* Hero Updates */
+  .hero {
+    padding: var(--space-24) 0;
+  }
+  
+  .hero-content {
+    gap: var(--space-16);
+  }
+  
+  /* Slide Updates */
+  .slide {
+    padding: var(--space-16) var(--space-8);
+  }
+  
+  .slide-content {
+    max-width: 1200px;
+  }
+}
+
+/* Large Desktops and Up (1280px+)
+   ========================================================================== */
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+  
+  /* Enhanced Spacing */
+  .hero {
+    padding: var(--space-24) 0;
+  }
+  
+  .features-grid {
+    gap: var(--space-16);
+  }
+  
+  .slide-content {
+    max-width: 1280px;
+  }
+}
+
+/* Extra Large Screens (1536px+)
+   ========================================================================== */
+@media (min-width: 1536px) {
+  .slide-content {
+    max-width: 1400px;
+  }
+  
+  .features-grid {
+    gap: var(--space-24);
+  }
+}
+
+/* Responsive Utilities
+   ========================================================================== */
+
+/* Mobile-only utilities */
+@media (max-width: 639px) {
+  .mobile-hidden { display: none !important; }
+  .mobile-full-width { width: 100% !important; }
+  .mobile-center { text-align: center !important; }
+  .mobile-stack { 
+    flex-direction: column !important; 
+    gap: var(--space-3) !important;
+  }
+}
+
+/* Tablet and up utilities */
+@media (min-width: 640px) {
+  .sm-block { display: block !important; }
+  .sm-flex { display: flex !important; }
+  .sm-grid { display: grid !important; }
+  .sm-hidden { display: none !important; }
+  
+  .sm-grid-1 { grid-template-columns: 1fr !important; }
+  .sm-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .sm-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  
+  .sm-text-left { text-align: left !important; }
+  .sm-text-center { text-align: center !important; }
+}
+
+@media (min-width: 768px) {
+  .md-block { display: block !important; }
+  .md-flex { display: flex !important; }
+  .md-grid { display: grid !important; }
+  .md-hidden { display: none !important; }
+  
+  .md-grid-1 { grid-template-columns: 1fr !important; }
+  .md-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .md-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .md-grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  
+  .md-text-left { text-align: left !important; }
+  .md-text-center { text-align: center !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg-block { display: block !important; }
+  .lg-flex { display: flex !important; }
+  .lg-grid { display: grid !important; }
+  .lg-hidden { display: none !important; }
+  
+  .lg-grid-1 { grid-template-columns: 1fr !important; }
+  .lg-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .lg-grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .lg-grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  
+  .lg-text-left { text-align: left !important; }
+  .lg-text-center { text-align: center !important; }
+}
+
+/* Touch and Mobile Specific Styles
+   ========================================================================== */
+
+/* Touch targets */
+@media (max-width: 1023px) {
+  .btn, .slide-nav-btn, .slide-indicator {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Increase spacing for touch */
+  .btn-group {
+    gap: var(--space-4);
+  }
+  
+  .slide-indicators {
+    gap: var(--space-3);
+  }
+}
+
+/* Hover support detection */
+@media (hover: hover) {
+  .hover-scale:hover { transform: scale(1.05); }
+  .hover-lift:hover { transform: translateY(-2px); }
+  .hover-shadow:hover { box-shadow: var(--shadow-medium); }
+  
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+}
+
+/* No hover support (touch devices) */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+  
+  /* Enhanced focus styles for touch devices */
+  .btn:focus,
+  .slide-nav-btn:focus,
+  .slide-indicator:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Orientation Specific Styles
+   ========================================================================== */
+
+/* Portrait orientation */
+@media (orientation: portrait) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Landscape tablets */
+@media (min-width: 768px) and (orientation: landscape) {
+  .hero {
+    padding: var(--space-12) 0;
+  }
+  
+  .slide {
+    padding: var(--space-8) var(--space-4);
+  }
+}
+
+/* High DPI Screens
+   ========================================================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  /* Optimize for high DPI displays */
+  .feature-icon {
+    background-size: contain;
+  }
+}
+
+/* Reduced Motion Support
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .card,
+  .btn,
+  .slide-nav-btn,
+  .slide-indicator,
+  .slide-progress-bar {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .hover-scale:hover,
+  .hover-lift:hover {
+    transform: none !important;
+  }
+}
+
+/* Large Text Support
+   ========================================================================== */
+
+@media (min-width: 1024px) and (prefers-reduced-data: reduce) {
+  /* Optimize for slow connections on larger screens */
+  .hero-visual {
+    display: none;
+  }
+}
+
+/* Print Styles
+   ========================================================================== */
+
+@media print {
+  .slide-navigation,
+  .slide-progress,
+  .btn-group {
+    display: none !important;
+  }
+  
+  .slide {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    page-break-after: always;
+    height: auto !important;
+    padding: 2rem 1rem;
+  }
+  
+  .slides-container {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  .hero {
+    padding: 1rem 0;
+  }
+  
+  .features-grid,
+  .use-cases-grid,
+  .roadmap-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .card {
+    break-inside: avoid;
+    margin: 0.5rem 0;
+    box-shadow: none !important;
+    border: 1px solid var(--color-border) !important;
+  }
+}

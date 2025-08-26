@@ -1,0 +1,372 @@
+/* ==========================================================================
+   Claude Flow BLE Marketing Site - Main Styles
+   ========================================================================== */
+
+/* CSS Custom Properties (Variables)
+   ========================================================================== */
+
+:root {
+  /* Primary Colors */
+  --color-primary: #2563EB;
+  --color-primary-light: #3B82F6;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  
+  /* Neutral Colors */
+  --color-text-dark: #1F2937;
+  --color-text-medium: #4B5563;
+  --color-text-light: #6B7280;
+  --color-background: #FFFFFF;
+  --color-background-alt: #F9FAFB;
+  --color-border: #E5E7EB;
+  
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Font Sizes */
+  --font-size-display: 48px;
+  --font-size-h1: 36px;
+  --font-size-h2: 30px;
+  --font-size-h3: 24px;
+  --font-size-body-large: 18px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  
+  /* Line Heights */
+  --line-height-display: 52px;
+  --line-height-h1: 40px;
+  --line-height-h2: 36px;
+  --line-height-h3: 32px;
+  --line-height-body-large: 28px;
+  --line-height-body: 24px;
+  --line-height-small: 20px;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Spacing System (8px base unit) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  
+  /* Border Radius */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+  --border-radius-xlarge: 16px;
+  
+  /* Shadows */
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-index Scale */
+  --z-index-dropdown: 100;
+  --z-index-modal: 200;
+  --z-index-tooltip: 300;
+  
+  /* Breakpoints (for JavaScript usage) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-dark: #F9FAFB;
+    --color-text-medium: #D1D5DB;
+    --color-text-light: #9CA3AF;
+    --color-background: #111827;
+    --color-background-alt: #1F2937;
+    --color-border: #374151;
+  }
+}
+
+/* Base Reset and Normalization
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Styles
+   ========================================================================== */
+
+.display {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-6) 0;
+}
+
+.h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-6) 0;
+}
+
+.h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.body-large {
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body-large);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-medium);
+}
+
+.body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-medium);
+}
+
+.small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-light);
+}
+
+.subtitle {
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body-large);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-medium);
+  margin: 0 0 var(--space-8) 0;
+}
+
+/* Semantic HTML typography */
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-6) 0;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-4) 0;
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--space-4) 0;
+}
+
+p {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-medium);
+  margin: 0 0 var(--space-4) 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+p {
+  margin: 0 0 var(--space-4) 0;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Main Layout Structure
+   ========================================================================== */
+
+.app-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  position: relative;
+  width: 100%;
+}
+
+/* Section Base Styles */
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-4);
+}
+
+.section-content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Legacy support for existing content divs */
+.slide-content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Smooth Scroll Navigation
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-8);
+}
+
+/* Scroll Animations
+   ========================================================================== */
+
+.card,
+.feature-card,
+.use-case,
+.roadmap-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s var(--transition-ease);
+}
+
+.card.animate-in,
+.feature-card.animate-in,
+.use-case.animate-in,
+.roadmap-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays for multiple elements */
+.card:nth-child(1).animate-in { transition-delay: 0.1s; }
+.card:nth-child(2).animate-in { transition-delay: 0.2s; }
+.card:nth-child(3).animate-in { transition-delay: 0.3s; }
+
+.feature-card:nth-child(1).animate-in { transition-delay: 0.1s; }
+.feature-card:nth-child(2).animate-in { transition-delay: 0.2s; }
+
+.roadmap-item:nth-child(1).animate-in { transition-delay: 0.1s; }
+.roadmap-item:nth-child(2).animate-in { transition-delay: 0.2s; }
+.roadmap-item:nth-child(3).animate-in { transition-delay: 0.3s; }
+
+/* Accessibility Utilities
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .section {
+    page-break-after: always;
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+  
+  .main-content {
+    height: auto;
+    overflow: visible;
+  }
+}
