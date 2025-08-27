@@ -1,0 +1,262 @@
+/* ==========================================================================
+   Claude Flow BLE - Performance & Accessibility Optimizations
+   ========================================================================== */
+
+/* Critical CSS optimizations */
+:root {
+  /* Performance optimizations */
+  --will-change-auto: auto;
+  --will-change-transform: transform;
+  --will-change-opacity: opacity;
+  
+  /* Reduced motion support */
+  --motion-duration: 0.3s;
+  --motion-easing: ease;
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0.01ms;
+    --transition-fast: 0.01ms;
+    --transition-medium: 0.01ms;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Performance improvements */
+.app-container {
+  contain: layout style paint;
+}
+
+.section {
+  contain: layout style paint;
+  will-change: var(--will-change-auto);
+}
+
+/* Optimize animations */
+.card,
+.feature-card,
+.roadmap-item,
+.use-case {
+  will-change: var(--will-change-auto);
+}
+
+.card:hover,
+.feature-card:hover,
+.roadmap-item:hover,
+.use-case:hover {
+  will-change: var(--will-change-transform);
+}
+
+/* Optimize for better paint performance */
+.hero-visual,
+.phone-frame,
+.popup-mockup {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Better focus management */
+.sr-only:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Improve loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+  .btn,
+  .download-link,
+  .support-link,
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 16px;
+  }
+}
+
+/* Optimize images (when they exist) */
+img {
+  max-width: 100%;
+  height: auto;
+  loading: lazy;
+}
+
+/* Critical above-the-fold optimizations */
+.section-hero {
+  contain: layout style;
+}
+
+.section-hero .hero-text,
+.section-hero .hero-visual {
+  contain: layout style paint;
+}
+
+/* Prevent layout shift */
+.app-mockup,
+.phone-frame {
+  aspect-ratio: 375 / 667; /* iPhone aspect ratio */
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Better error states */
+.notification {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimize scroll performance */
+.main-content {
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Critical rendering path optimization */
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Improve CLS (Cumulative Layout Shift) */
+.features-grid,
+.roadmap-timeline,
+.use-cases-grid {
+  min-height: 400px; /* Prevent layout shift while loading */
+}
+
+/* Optimize for Core Web Vitals */
+@supports (content-visibility: auto) {
+  .section:not(.section-hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+}
+
+/* Better printing */
+@media print {
+  .notification,
+  .btn,
+  .hero-buttons,
+  .donation-buttons {
+    display: none !important;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+  
+  .btn {
+    border-width: 3px;
+  }
+  
+  .feature-icon,
+  .roadmap-icon,
+  .use-case-icon {
+    filter: contrast(2);
+  }
+}
+
+/* Dark mode improvements */
+@media (prefers-color-scheme: dark) {
+  .card {
+    border-color: var(--color-border);
+  }
+  
+  .notification {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Accessibility improvements */
+.btn:focus-visible,
+.download-link:focus-visible,
+.support-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-medium);
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Form optimizations */
+.form-input:invalid {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-input:valid {
+  border-color: var(--color-success);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Smooth scrolling fallback */
+@supports not (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Font loading optimization */
+@font-face {
+  font-display: swap;
+}

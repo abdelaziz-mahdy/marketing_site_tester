@@ -36,28 +36,56 @@
 
 .hero-buttons {
   margin-bottom: var(--space-6);
+  display: flex;
+  justify-content: flex-start;
 }
 
 .hero-buttons .btn {
-  min-width: 160px;
+  min-width: 180px;
 }
 
 .hero-highlights {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .highlight-item {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(37, 99, 235, 0.05);
+  border-radius: var(--border-radius);
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: highlightSlideIn 0.6s ease-out forwards;
 }
+
+.highlight-item:nth-child(1) { animation-delay: 0.8s; }
+.highlight-item:nth-child(2) { animation-delay: 0.9s; }
+.highlight-item:nth-child(3) { animation-delay: 1.0s; }
 
 .highlight-icon {
   color: var(--color-success);
   font-weight: var(--font-weight-bold);
   font-size: 16px;
+  min-width: 20px;
+  text-align: center;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.highlight-item .small {
+  color: var(--color-text-medium);
+  font-weight: var(--font-weight-medium);
 }
 
 /* App Mockup Styles
@@ -384,6 +412,17 @@
   }
 }
 
+@keyframes highlightSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Responsive Design
    ========================================================================== */
 
@@ -518,8 +557,11 @@
   .device-item,
   .floating-badge,
   .wave,
-  .status-indicator {
+  .status-indicator,
+  .highlight-item {
     animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
   
   .phone-frame:hover {

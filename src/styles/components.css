@@ -76,20 +76,6 @@
   box-shadow: var(--shadow-medium);
 }
 
-/* Warning Button */
-.btn-warning {
-  background: var(--color-warning);
-  color: white;
-  border-color: var(--color-warning);
-}
-
-.btn-warning:hover:not(:disabled) {
-  background: #D97706;
-  border-color: #D97706;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-medium);
-}
-
 /* Button Sizes */
 .btn-small {
   padding: 8px 16px;
@@ -109,6 +95,13 @@
   gap: var(--space-3);
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* Single CTA Container */
+.single-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Card Components
@@ -131,17 +124,17 @@
 /* Card Variants */
 .card-primary {
   border-color: var(--color-primary);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  background: rgba(37, 99, 235, 0.03);
 }
 
 .card-success {
   border-color: var(--color-success);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+  background: rgba(16, 185, 129, 0.03);
 }
 
-.card-warning {
-  border-color: var(--color-warning);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(217, 119, 6, 0.05) 100%);
+.card-accent {
+  border-color: var(--color-accent);
+  background: rgba(107, 114, 128, 0.03);
 }
 
 /* Feature Card */
@@ -254,7 +247,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  background: rgba(37, 99, 235, 0.05);
   opacity: 0;
   transition: opacity var(--transition-medium);
 }
@@ -266,7 +259,7 @@
 .feature-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.15) 100%);
+  background: rgba(37, 99, 235, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -283,7 +276,7 @@
 .feature-card:hover .feature-icon {
   transform: scale(1.05);
   border-color: var(--color-primary);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(59, 130, 246, 0.2) 100%);
+  background: rgba(37, 99, 235, 0.15);
 }
 
 .feature-card h3 {
@@ -357,35 +350,14 @@
 /* Feature Action Section */
 .feature-action {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.08) 100%);
+  background: rgba(37, 99, 235, 0.03);
   border-radius: var(--border-radius-large);
   border: 1px solid rgba(37, 99, 235, 0.1);
   position: relative;
   overflow: hidden;
 }
 
-.feature-action::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
+/* Removed shimmer animation for cleaner look */
 
 /* Roadmap Components
    ========================================================================== */
@@ -419,7 +391,7 @@
 .roadmap-item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-large);
-  border-color: var(--color-warning);
+  border-color: var(--color-accent);
 }
 
 /* Timeline Connector Lines */
@@ -429,7 +401,7 @@
   left: 50%;
   width: 2px;
   height: 24px;
-  background: linear-gradient(to bottom, transparent 0%, var(--color-warning) 50%, transparent 100%);
+  background: var(--color-accent);
   transform: translateX(-50%);
   opacity: 0.6;
 }
@@ -449,22 +421,22 @@
 .roadmap-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%);
+  background: rgba(107, 114, 128, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: var(--color-warning);
+  color: var(--color-accent);
   flex-shrink: 0;
-  border: 2px solid rgba(245, 158, 11, 0.3);
+  border: 2px solid rgba(107, 114, 128, 0.3);
   transition: all var(--transition-medium);
   position: relative;
 }
 
 .roadmap-item:hover .roadmap-icon {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.3) 100%);
-  border-color: var(--color-warning);
+  background: rgba(107, 114, 128, 0.15);
+  border-color: var(--color-accent);
   transform: scale(1.05);
 }
 
@@ -476,7 +448,7 @@
 
 /* Roadmap Badge */
 .roadmap-badge {
-  background: var(--color-warning);
+  background: var(--color-accent);
   color: white;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-semibold);
@@ -489,22 +461,7 @@
   overflow: hidden;
 }
 
-.roadmap-badge::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer-badge 2s infinite;
-}
-
-@keyframes shimmer-badge {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
-}
+/* Removed shimmer animation for cleaner look */
 
 /* Roadmap Highlights */
 .roadmap-highlights {
@@ -542,9 +499,9 @@
 /* Roadmap Action Section */
 .roadmap-action {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.08) 100%);
+  background: rgba(107, 114, 128, 0.03);
   border-radius: var(--border-radius-large);
-  border: 1px solid rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(107, 114, 128, 0.1);
   position: relative;
   overflow: hidden;
   margin-top: var(--space-8);
@@ -555,16 +512,7 @@
   z-index: 1;
 }
 
-.roadmap-action::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
-  animation: shimmer 4s infinite;
-}
+/* Removed shimmer animation for cleaner look */
 
 /* Roadmap Progress Bar */
 .roadmap-progress {
@@ -581,7 +529,7 @@
 .progress-bar {
   width: 100%;
   height: 8px;
-  background: rgba(245, 158, 11, 0.2);
+  background: rgba(107, 114, 128, 0.2);
   border-radius: var(--border-radius-small);
   overflow: hidden;
   position: relative;
@@ -589,28 +537,14 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-warning) 0%, #FBBf24 100%);
+  background: var(--color-accent);
   border-radius: var(--border-radius-small);
   transition: width 1s ease;
   position: relative;
   overflow: hidden;
 }
 
-.progress-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: progress-shimmer 2s infinite;
-}
-
-@keyframes progress-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
+/* Removed shimmer animation for cleaner look */
 
 /* Use Cases Components
    ========================================================================== */
@@ -652,7 +586,7 @@
 .use-case-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.15) 100%);
+  background: rgba(37, 99, 235, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -667,7 +601,7 @@
 .use-case:hover .use-case-icon {
   transform: scale(1.05);
   border-color: var(--color-primary);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(59, 130, 246, 0.2) 100%);
+  background: rgba(37, 99, 235, 0.15);
 }
 
 /* Use Case Quote */
@@ -746,7 +680,7 @@
 /* Use Cases Action Section */
 .use-cases-action {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.08) 100%);
+  background: rgba(37, 99, 235, 0.03);
   border-radius: var(--border-radius-large);
   border: 1px solid rgba(37, 99, 235, 0.1);
   position: relative;
@@ -915,7 +849,7 @@
 /* Donation CTA */
 .donation-cta {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.08) 100%);
+  background: rgba(16, 185, 129, 0.03);
   border-radius: var(--border-radius-large);
   border: 1px solid rgba(16, 185, 129, 0.1);
   text-align: center;
@@ -1016,8 +950,8 @@
   color: white;
 }
 
-.badge-warning {
-  background: var(--color-warning);
+.badge-accent {
+  background: var(--color-accent);
   color: white;
 }
 
@@ -1178,14 +1112,14 @@
 /* Color Utilities */
 .text-primary { color: var(--color-primary) !important; }
 .text-success { color: var(--color-success) !important; }
-.text-warning { color: var(--color-warning) !important; }
+.text-accent { color: var(--color-accent) !important; }
 .text-dark { color: var(--color-text-dark) !important; }
 .text-medium { color: var(--color-text-medium) !important; }
 .text-light { color: var(--color-text-light) !important; }
 
 .bg-primary { background-color: var(--color-primary) !important; }
 .bg-success { background-color: var(--color-success) !important; }
-.bg-warning { background-color: var(--color-warning) !important; }
+.bg-accent { background-color: var(--color-accent) !important; }
 .bg-white { background-color: var(--color-background) !important; }
 .bg-alt { background-color: var(--color-background-alt) !important; }
 
@@ -1278,7 +1212,7 @@
 .border-0 { border: 0 !important; }
 .border-primary { border-color: var(--color-primary) !important; }
 .border-success { border-color: var(--color-success) !important; }
-.border-warning { border-color: var(--color-warning) !important; }
+.border-accent { border-color: var(--color-accent) !important; }
 
 .rounded { border-radius: var(--border-radius-medium) !important; }
 .rounded-small { border-radius: var(--border-radius-small) !important; }
@@ -1376,7 +1310,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  background: var(--color-primary);
   border-radius: var(--border-radius-medium);
   color: white;
   transition: all var(--transition-fast);
@@ -1384,7 +1318,7 @@
 
 .download-link:hover .platform-icon {
   transform: scale(1.1);
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  background: var(--color-primary-light);
 }
 
 .platform-info {
@@ -1404,22 +1338,22 @@
 }
 
 /* Platform-specific styling */
-.platform-ios .platform-icon {
-  background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
-}
-
-.platform-android .platform-icon {
-  background: linear-gradient(135deg, #34A853 0%, #137333 100%);
-}
-
+.platform-ios .platform-icon,
+.platform-android .platform-icon,
 .platform-github .platform-icon {
-  background: linear-gradient(135deg, #24292F 0%, #656D76 100%);
+  background: var(--color-primary);
+}
+
+.platform-ios .platform-icon:hover,
+.platform-android .platform-icon:hover,
+.platform-github .platform-icon:hover {
+  background: var(--color-primary-light);
 }
 
 /* Download Stats */
 .download-stats {
   padding: var(--space-6);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.02) 100%);
+  background: rgba(37, 99, 235, 0.03);
   border-radius: var(--border-radius-large);
   border: 1px solid rgba(37, 99, 235, 0.1);
 }
@@ -1469,7 +1403,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  background: var(--color-primary);
   border-radius: var(--border-radius-medium);
   color: white;
   transition: all var(--transition-fast);
@@ -1517,7 +1451,7 @@
 
 .newsletter-content {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+  background: rgba(16, 185, 129, 0.03);
   border: 1px solid rgba(16, 185, 129, 0.15);
 }
 
@@ -1586,8 +1520,8 @@
 
 .donation-content {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.08) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.15);
+  background: rgba(107, 114, 128, 0.03);
+  border: 1px solid rgba(107, 114, 128, 0.15);
   text-align: center;
 }
 
@@ -1628,7 +1562,7 @@
 /* Final CTA Section */
 .final-cta {
   padding: var(--space-8);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.02) 100%);
+  background: rgba(37, 99, 235, 0.03);
   border-radius: var(--border-radius-large);
   border: 1px solid rgba(37, 99, 235, 0.1);
 }

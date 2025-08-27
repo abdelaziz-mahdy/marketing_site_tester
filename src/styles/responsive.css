@@ -478,7 +478,7 @@
     left: 16.67%;
     right: 16.67%;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-warning) 0%, rgba(245, 158, 11, 0.5) 50%, var(--color-warning) 100%);
+    background: var(--color-accent);
     z-index: 0;
   }
   
