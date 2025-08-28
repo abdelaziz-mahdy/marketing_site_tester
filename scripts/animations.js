@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Claude Flow BLE Marketing Site - Animation Utilities
+   Wireless Testing Toolkit Marketing Site - Animation Utilities
    ========================================================================== */
 
 /**

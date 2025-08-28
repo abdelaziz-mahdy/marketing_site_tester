@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Claude Flow BLE Marketing Site - Slide Management
+   Wireless Testing Toolkit Marketing Site - Slide Management
    ========================================================================== */
 
 /**

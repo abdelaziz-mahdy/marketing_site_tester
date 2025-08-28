@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Claude Flow BLE Marketing Site - Main JavaScript
+   Wireless Testing Toolkit Marketing Site - Main JavaScript
    ========================================================================== */
 
 /**
@@ -24,7 +24,7 @@ class MarketingSiteApp {
   init() {
     if (this.isInitialized) return;
     
-    this.log('Initializing Claude Flow BLE Marketing Site...');
+    this.log('Initializing Wireless Testing Toolkit Marketing Site...');
     
     try {
       // Initialize core components

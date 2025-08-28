@@ -1,10 +1,10 @@
-# Claude Flow BLE - Marketing Site
+# Wireless Testing Toolkit - Marketing Site
 
-A professional marketing website for Claude Flow BLE, a comprehensive BLE and NFC communication testing application.
+A professional marketing website for Wireless Testing Toolkit, a comprehensive BLE and NFC communication testing application.
 
 ## Project Overview
 
-This is a slide-based marketing site showcasing the features, use cases, and value proposition of the Claude Flow BLE app. The site uses a modern, accessible design with smooth transitions between content sections.
+This is a slide-based marketing site showcasing the features, use cases, and value proposition of the Wireless Testing Toolkit app. The site uses a modern, accessible design with smooth transitions between content sections.
 
 ## Technology Stack
 
