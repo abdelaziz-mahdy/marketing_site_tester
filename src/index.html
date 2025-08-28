@@ -92,53 +92,36 @@
                             </div>
                         </div>
                         <div class="hero-visual">
-                            <div class="app-mockup">
-                                <div class="phone-frame">
-                                    <div class="phone-screen">
-                                        <div class="app-ui">
-                                            <div class="app-header">
-                                                <div class="app-title">Claude Flow BLE</div>
-                                                <div class="status-indicator connected"></div>
-                                            </div>
-                                            <div class="scan-results">
-                                                <div class="device-item">
-                                                    <div class="device-icon">📱</div>
-                                                    <div class="device-info">
-                                                        <div class="device-name">IoT Sensor Device</div>
-                                                        <div class="device-details">Signal: -42 dBm • Connected</div>
-                                                    </div>
-                                                </div>
-                                                <div class="device-item">
-                                                    <div class="device-icon">🏷️</div>
-                                                    <div class="device-info">
-                                                        <div class="device-name">NFC Tag - NDEF</div>
-                                                        <div class="device-details">Type 2 • 924 bytes</div>
-                                                    </div>
-                                                </div>
-                                                <div class="device-item">
-                                                    <div class="device-icon">⌚</div>
-                                                    <div class="device-info">
-                                                        <div class="device-name">Fitness Tracker</div>
-                                                        <div class="device-details">Signal: -38 dBm • Available</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="action-buttons">
-                                                <div class="primary-btn">Scan Devices</div>
-                                                <div class="secondary-btn">Read NFC</div>
-                                            </div>
-                                        </div>
+                            <div class="app-screenshots">
+                                <div class="screenshot-container">
+                                    <div class="screenshot-item active" data-tab="ble">
+                                        <img src="assets/images/ble_tab.jpeg" alt="Claude Flow BLE app showing BLE device scanning and communication features" class="app-screenshot" />
+                                        <div class="screenshot-label">BLE Communication</div>
                                     </div>
-                                    <div class="phone-reflection"></div>
+                                    <div class="screenshot-item" data-tab="nfc">
+                                        <img src="assets/images/nfc_tab.jpeg" alt="Claude Flow BLE app showing NFC tag reading and analysis features" class="app-screenshot" />
+                                        <div class="screenshot-label">NFC Tag Reading</div>
+                                    </div>
                                 </div>
-                                <div class="floating-elements">
-                                    <div class="floating-badge ble-badge">BLE</div>
-                                    <div class="floating-badge nfc-badge">NFC</div>
-                                    <div class="signal-waves">
-                                        <div class="wave wave-1"></div>
-                                        <div class="wave wave-2"></div>
-                                        <div class="wave wave-3"></div>
-                                    </div>
+                                <div class="screenshot-tabs">
+                                    <button class="tab-button active" data-tab="ble" onclick="switchScreenshot('ble')" aria-label="View BLE features">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6.5 6.5L17.5 17.5"></path>
+                                            <path d="M6.5 17.5L17.5 6.5"></path>
+                                            <path d="M12 2L17 7L12 12L17 17L12 22L7 17L12 12L7 7L12 2Z"></path>
+                                        </svg>
+                                        BLE
+                                    </button>
+                                    <button class="tab-button" data-tab="nfc" onclick="switchScreenshot('nfc')" aria-label="View NFC features">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"></path>
+                                            <polyline points="7,10.5 7,13.5 10,13.5 10,10.5"></polyline>
+                                            <polyline points="14,10.5 14,13.5 17,13.5 17,10.5"></polyline>
+                                            <path d="M7 8.5c0.5-0.5 1.5-0.5 2 0"></path>
+                                            <path d="M15 8.5c0.5-0.5 1.5-0.5 2 0"></path>
+                                        </svg>
+                                        NFC
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +129,104 @@
                 </div>
             </section>
             
-            <!-- Section 2: Current Features -->
+            <!-- Section 2: Use Cases -->
+            <section class="section section-use-cases" id="use-cases" aria-labelledby="use-cases-title">
+                <div class="section-content">
+                    <h2 id="use-cases-title" class="h1">Use Cases</h2>
+                    <p class="subtitle">Designed for BLE and NFC communication testing scenarios</p>
+                    
+                    <div class="use-cases-grid">
+                        <!-- IoT Device Testing Use Case -->
+                        <div class="use-case card hover-lift" role="article" aria-labelledby="iot-use-case-title">
+                            <div class="use-case-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                    <path d="M8.5 13.5L5.5 16.5"></path>
+                                    <path d="M15.5 13.5L18.5 16.5"></path>
+                                </svg>
+                            </div>
+                            <h3 id="iot-use-case-title" class="h3 mb-4">IoT Device Testing</h3>
+                            <p class="body mb-4">Validate BLE communication protocols during device development and ensure reliable data transmission across different environmental conditions.</p>
+                            <div class="use-case-benefits">
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Protocol validation during development</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Real-time connection monitoring</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Data transmission verification</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quality Assurance Use Case -->
+                        <div class="use-case card hover-lift" role="article" aria-labelledby="qa-use-case-title">
+                            <div class="use-case-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"></path>
+                                    <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                                    <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                                    <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>
+                                    <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path>
+                                </svg>
+                            </div>
+                            <h3 id="qa-use-case-title" class="h3 mb-4">Quality Assurance</h3>
+                            <p class="body mb-4">Verify NFC functionality across different tag types and ensure consistent read performance in production applications before release.</p>
+                            <div class="use-case-benefits">
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Multi-format tag testing</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Performance consistency checks</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Production readiness validation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Educational Projects Use Case -->
+                        <div class="use-case card hover-lift" role="article" aria-labelledby="edu-use-case-title">
+                            <div class="use-case-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                    <circle cx="12" cy="8" r="2"></circle>
+                                </svg>
+                            </div>
+                            <h3 id="edu-use-case-title" class="h3 mb-4">Educational Projects</h3>
+                            <p class="body mb-4">Hands-on tools to experiment with BLE and NFC communication safely while understanding the underlying technologies.</p>
+                            <div class="use-case-benefits">
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Safe learning environment</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Hands-on protocol exploration</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Real-world technology exposure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- Section 3: Current Features -->
             <section class="section section-features" id="features" aria-labelledby="features-title">
                 <div class="section-content">
                     <h2 id="features-title" class="h1">Current Capabilities</h2>
@@ -220,12 +300,48 @@
                                 <span class="badge badge-secondary">Type 1-5</span>
                             </div>
                         </div>
+                        
+                        <!-- Protocol Analysis Feature -->
+                        <div class="feature-card card hover-lift" role="article" aria-labelledby="protocol-feature-title">
+                            <div class="feature-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                    <path d="M3 12v9a2 2 0 0 0 2 2h9"></path>
+                                    <path d="M8 12h8"></path>
+                                    <path d="M8 16h5"></path>
+                                    <circle cx="18" cy="6" r="2"></circle>
+                                </svg>
+                            </div>
+                            <h3 id="protocol-feature-title" class="h3 mb-3">Protocol Analysis</h3>
+                            <p class="body mb-4">Deep dive into communication protocols with detailed packet inspection and timing analysis. Understand data flow patterns and identify potential issues.</p>
+                            
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="highlight-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Packet inspection & timing</span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="highlight-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Data flow visualization</span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="highlight-icon text-success" aria-hidden="true">✓</span>
+                                    <span class="small">Error detection & logging</span>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-badges mt-4">
+                                <span class="badge badge-primary">Real-time</span>
+                                <span class="badge badge-secondary">Export logs</span>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
             </section>
             
-            <!-- Section 3: Future Features -->
+            <!-- Section 4: Future Features -->
             <section class="section section-roadmap" id="roadmap" aria-labelledby="roadmap-title">
                 <div class="section-content">
                     <h2 id="roadmap-title" class="h1">Coming Soon</h2>
@@ -347,103 +463,6 @@
                         
                     </div>
                     
-                    
-                </div>
-            </section>
-            
-            <!-- Section 4: Use Cases -->
-            <section class="section section-use-cases" id="use-cases" aria-labelledby="use-cases-title">
-                <div class="section-content">
-                    <h2 id="use-cases-title" class="h1">Use Cases</h2>
-                    <p class="subtitle">Designed for BLE and NFC communication testing scenarios</p>
-                    
-                    <div class="use-cases-grid">
-                        <!-- IoT Device Testing Use Case -->
-                        <div class="use-case card hover-lift" role="article" aria-labelledby="iot-use-case-title">
-                            <div class="use-case-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                    <path d="M8.5 13.5L5.5 16.5"></path>
-                                    <path d="M15.5 13.5L18.5 16.5"></path>
-                                </svg>
-                            </div>
-                            <h3 id="iot-use-case-title" class="h3 mb-4">IoT Device Testing</h3>
-                            <p class="body mb-4">Validate BLE communication protocols during device development and ensure reliable data transmission across different environmental conditions.</p>
-                            <div class="use-case-benefits">
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Protocol validation during development</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Real-time connection monitoring</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Data transmission verification</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Quality Assurance Use Case -->
-                        <div class="use-case card hover-lift" role="article" aria-labelledby="qa-use-case-title">
-                            <div class="use-case-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 12l2 2 4-4"></path>
-                                    <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-                                    <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
-                                    <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path>
-                                    <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"></path>
-                                </svg>
-                            </div>
-                            <h3 id="qa-use-case-title" class="h3 mb-4">Quality Assurance</h3>
-                            <p class="body mb-4">Verify NFC functionality across different tag types and ensure consistent read performance in production applications before release.</p>
-                            <div class="use-case-benefits">
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Multi-format tag testing</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Performance consistency checks</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Production readiness validation</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Educational Projects Use Case -->
-                        <div class="use-case card hover-lift" role="article" aria-labelledby="edu-use-case-title">
-                            <div class="use-case-icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                                    <circle cx="12" cy="8" r="2"></circle>
-                                </svg>
-                            </div>
-                            <h3 id="edu-use-case-title" class="h3 mb-4">Educational Projects</h3>
-                            <p class="body mb-4">Hands-on tools to experiment with BLE and NFC communication safely while understanding the underlying technologies.</p>
-                            <div class="use-case-benefits">
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Safe learning environment</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Hands-on protocol exploration</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <span class="benefit-icon text-success" aria-hidden="true">✓</span>
-                                    <span class="small">Real-world technology exposure</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     
                 </div>
             </section>

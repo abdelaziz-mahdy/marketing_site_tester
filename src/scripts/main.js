@@ -879,3 +879,30 @@ function showNotification(message, type = 'info') {
     }
   }, 5000);
 }
+
+/**
+ * Screenshot switching functionality for hero section
+ */
+function switchScreenshot(tabName) {
+  // Remove active class from all items and buttons
+  document.querySelectorAll('.screenshot-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.classList.remove('active');
+  });
+  
+  // Add active class to selected items
+  document.querySelectorAll(`[data-tab="${tabName}"]`).forEach(element => {
+    element.classList.add('active');
+  });
+}
+
+// Initialize the application when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const app = new MarketingSiteApp();
+  });
+} else {
+  const app = new MarketingSiteApp();
+}
