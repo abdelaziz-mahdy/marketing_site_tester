@@ -34,6 +34,18 @@
   grid-template-columns: 1fr;
   max-width: 1200px;
   margin: 0 auto;
+  align-items: stretch; /* Ensure equal heights */
+}
+
+/* Ensure feature cards stretch to full height */
+.features-grid .feature-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.features-grid .feature-card .feature-badges {
+  margin-top: auto;
 }
 
 /* Roadmap Timeline */

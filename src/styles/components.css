@@ -299,7 +299,7 @@
   flex-direction: column;
   gap: var(--space-2);
   margin: var(--space-4) 0;
-  text-align: left;
+  text-align: center;
   position: relative;
   z-index: 1;
 }
@@ -307,6 +307,7 @@
 .feature-highlight {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   font-size: var(--font-size-small);
   color: var(--color-text-medium);
@@ -345,6 +346,7 @@
   justify-content: center;
   position: relative;
   z-index: 1;
+  align-items: center;
 }
 
 /* Feature Action Section */
